@@ -66,20 +66,23 @@ public class MainActivity extends AppCompatActivity {
                     if (currentPlayer == 1) {
                         winner.setText("O has won!");
                         p2_count++;
-                    } else {
+                        flag=0;  //using this here in case u already won u dont need to check for draw game
+                    }
+                    else {
                         winner.setText("X has won!");
                         p1_count++;
+                        flag=0; //using this here in case u already won u dont need to check for draw game
                     }
                 }
-
+                else if(flag==9)
+                {
+                    gameActive = false;
+                    LinearLayout winnerBox=(LinearLayout)findViewById(R.id.winnerBox);
+                    winnerBox.setVisibility(View.VISIBLE);
+                    TextView winner=(TextView)findViewById(R.id.winnerText);
+                    winner.setText("Game ended in a draw!");
+                }
             }
-        }
-        if(flag==9)
-        {
-            LinearLayout winnerBox=(LinearLayout)findViewById(R.id.winnerBox);
-            winnerBox.setVisibility(View.VISIBLE);
-            TextView winner=(TextView)findViewById(R.id.winnerText);
-            winner.setText("Game ended in a draw!");
         }
     }
 
